@@ -9,7 +9,7 @@ app.config['DEBUG'] = True
 
 @app.route('/')
 def hello():
-
+    return "Hey Man"
 
 
 @app.errorhandler(404)
