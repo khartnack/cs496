@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <title>Plan Your Trip</title>
+</head>
+<body>
+    <form action="{{ upload_url }}" method="POST" enctype="multipart/form-data">
+    <legend>Add Trip</legend>
+    <input type="hidden" name="action" value="add_trip">
+    <fieldset>
+        <legend>Trip Details</legend>
+        <label>Trip Name:</label>
+        <input type="text" name="trip-tripname">
+        <br>
+        <label>Upload Icon: </label><input type="file" name="itinerary">
+        {% if travelers|length > 0 %}
+        <fieldset>
+            <legend>Travelers</legend>
+            {% for t in travelers %}
+                <label> {{t.tripname }} </label>
+                    <input type="checkbox" name = "travelers[]" value="{{ t.key }}">
+            {% endfor %}
+        </fieldset>
+        <input type="submit" value="Add">
+    </fieldset>
+   {% endif %}
+    </form>
+    {% if trips|length > 0 %}
+    <section>
+        <h2>Edit Trips</h2>
+        {% for tr in trips %}
+        <a href='/edit?key={{ tr.key }}&type=trip'>{{ tr.tripname }}</a>
+        {% endfor %}
+    </section>
+    {% endif %}
+    {% if message %}
+    <section>
+        <h3>Result</h3>
+        <p>{{ message }} </p>
+    </section>
+    {% endif %}
+</body>
+</html>
