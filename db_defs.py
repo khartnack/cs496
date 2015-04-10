@@ -8,11 +8,9 @@ class Message(ndb.Model):
 class Trip(ndb.Model):
 	tripname = ndb.StringProperty(required=True)
 	travelers = ndb.KeyProperty(repeated=True)
-	#startdate = ndb.DateProperty(required=True)
-	#enddate = ndb.DateProperty(required=True)
+        length = ndb.StringProperty(required=True)
 	itinerary = ndb.BlobKeyProperty()
-	#destination = ndb.StringProperty(required=True)
+	destination = ndb.StringProperty(required=True)
 		
 class TripTraveler(ndb.Model):
-	name = ndb.StringProperty(required=True)
-	#passportexp = ndb.DateProperty(required=False)
+        name = ndb.StringProperty(required=True)
